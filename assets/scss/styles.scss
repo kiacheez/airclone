@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.search-box {
+  transition: box-shadow 0.5s linear;
+}
+
+.nav_link {
+  @apply ml-8 border-b-2 border-white px-2 h-full flex items-center;
+  a {
+    @apply py-10 px-2;
+  }
+  &:hover {
+    @apply border-blue-400;
+  }
+}
+
+.btn {
+  @apply w-full text-lg font-light text-center rounded-sm py-5;
+  &.btn--small {
+    @apply py-3 rounded-lg;
+  }
+}
+
+.btn-link {
+  @apply text-lg w-full text-center py-3 rounded-lg font-light  text-white bg-red-400;
+}
+
+input,
+textarea,
+select {
+  @apply w-full rounded-sm py-5 text-lg font-light text-left border border-gray-600 px-5;
+  &:focus {
+    @apply outline-none border-teal-500;
+  }
+}
+
+textarea {
+  resize: none;
+  height: 100px;
+}
+
+select {
+  @apply rounded-sm font-light text-lg w-full text-left border border-gray-600 px-5;
+  &:focus {
+    @apply outline-none border-teal-500;
+  }
+  height: 50px;
+}
+
+form {
+  .input {
+    @apply mb-3;
+    &.has_error {
+      input {
+        @apply underline bg-red-200 border-gray-600;
+        &:focus {
+          @apply border-gray-600;
+        }
+      }
+    }
+  }
+}
+
+@keyframes messageFadeIn {
+  0% {
+    opacity: 0;
+    transform: translaterY(-50px);
+  }
+  5% {
+    opacity: 1;
+    transform: translaterY(50px);
+  }
+  95% {
+    opacity: 1;
+    transform: translaterY(-50px);
+  }
+  100% {
+    opacity: 0;
+    transform: translaterY(50px);
+  }
+}
+
+.message {
+  animation: messageFadeIn 3s ease-in-out forwards;
+  &.error {
+    @apply bg-red-400;
+  }
+  &.debug {
+    @apply bg-blue-500;
+  }
+  &.info {
+    @apply bg-yellow-700;
+  }
+  &.success {
+    @apply bg-green-400;
+  }
+  &.warning {
+    @apply bg-pink-700;
+  }
+}
+
+.border-section {
+  @apply border border-gray-400 pb-8 mt-8;
+}
+
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-gap: 10px;
+  justify-items: center;
+}

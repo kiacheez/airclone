@@ -1,0 +1,36 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="{% static "css/styles.css" %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <title>{% block page_title %}{% endblock page_title %} Nbnb</title>
+  </head>
+  <body class="text-gray-800 mt-20">
+    {%include "partials/messages.html" %}
+    <header class="container max-w-full flex inset-0 items-center justify-between px-4 h-20 border-b border-gray 400 fixed bg-white" >
+      <div class="flex items-center" >
+        <a href="{% url "core:home" %}" class="mr-10 ml-10">
+          <img class="w-20 " src="{% static 'img/dmz_logo.png' %}"/>
+        </a>
+        {% block search_bar %}
+        <form method="get", action="{% url "rooms:search" %}">
+          <input class="search-box border px-6 py-0.5 h-3 text-sm font-medium text-gray-900 placeholder-gray-500 rounded-sm w-full shadow-md hover:shadow-lg focus:outline-none" name="city" placeholder="Search by City"/>
+        </form>
+        {% endblock search_bar %}
+      </div>
+
+      {% include "partials/nav.html" %} 
+    </header>
+
+    {% block content %} 
+    {% endblock %}
+
+    
+    {%include "partials/footer.html" %}
+  </body>
+</html>
